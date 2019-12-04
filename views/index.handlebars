@@ -1,0 +1,40 @@
+<div class="jumbotron jumbotron-fluid">
+    <div class='container'>
+    <h1 class="display-4">Eat Tha Burger!</h1>
+    <br><br>
+    <hr>
+    <form>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Do none of our options sound good? Create your own!</label>
+            <input type="data" class="form-control" id="burgerInput" placeholder="Enter New Burger">
+        </div>
+    </form>
+    <a class="btn btn-primary btn-lg" href="#" role="button" id='burgerMe'>Burger Me!</a>
+    </div>
+</div>
+<div class="container">
+    <div class='row'>
+        <div class='col-md-6'>
+            <h4>Menu Of Burgers:</h4>
+            <ul id='toEat'>
+                {{!-- dynamically creates burger line/button for each burger found in the db --}}
+                {{#each burgers}}
+                    {{#unless devoured}}
+                        <li><p>{{burger_name}}</p><button class='updateMe' data-id={{id}} data-devour={{devoured}}>Devour</button></li>
+                    {{/unless}}
+                {{/each}}
+            </ul>
+        </div>
+        <div class='col-md-6'>
+            <h4>Burgers You've Devoured:</h4>
+            <ul id='toDelete'>
+                {{!-- dynamically deletes burger line/button for each burger in the db --}}
+                {{#each burgers}}
+                    {{#if devoured}}
+                        <li><p>{{burger_name}}</p><button class='updateMe' data-id={{id}} data-devour={{devoured}}>Destroy</button></li>
+                    {{/if}}
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+</div>
